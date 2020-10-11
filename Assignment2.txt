@@ -1,0 +1,100 @@
+/******************************************************************************
+     Assingment 2  Question 1
+*******************************************************************************/
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+        float totalmark = 0,precentage;
+		System.out.println("Enter The Subject mark");
+		Scanner sc = new Scanner(System.in);
+		String arr[] =  {"Hindi","English","Maths","Phy","Chemistry"};
+		for(int i=0; i<arr.length; i++){
+		  System.out.print("Enter The "+arr[i]+" Mark: ");
+		  totalmark += sc.nextInt();
+		  System.out.println();
+		}
+		precentage = (totalmark/500) * 100;
+		switch( (int) precentage/10){
+		 case 9:
+            System.out.println("Grade : A+");
+            System.out.println("Percentage is: "+precentage);
+            break;
+        case 8:
+        case 7:
+            System.out.println("Grade : A");
+            System.out.println("Percentage is: "+precentage);
+            break;
+        case 6:
+            System.out.println("Grade : B");
+            System.out.println("Percentage is: "+precentage);
+            break;
+        case 5:
+            System.out.println("Grade : C");
+            System.out.println("Percentage is: "+precentage);
+            break;
+        default:
+            System.out.println("Grade : D");
+            break;
+		}
+
+	}
+}
+
+/******************************************************************************
+     Assingment 2  Question 2
+*******************************************************************************/
+
+import java.util.Scanner;
+import java.util.Date;
+
+class Employee{
+    private String Name;
+    private int db,mb,yb,salery;
+    float tax = 0;
+    Scanner sc = new Scanner(System.in);
+    Date d=new Date();  
+    int year=d.getYear()+1900;
+    int numyrs,intrestrate;
+      
+    Employee(){
+          System.out.println("Enter Employee Name");
+          Name = sc.nextLine();
+          System.out.println("Enter Employee Date or birth");
+          db = sc.nextInt();
+        System.out.println("Enter Employee month or birth");
+          mb = sc.nextInt();
+        System.out.println("Enter Employee year or birth");
+          yb = sc.nextInt();
+        System.out.println("Enter Employee month salery");
+          salery = sc.nextInt();
+    }
+    public void caltax(){
+        numyrs = (year-yb);
+        if(numyrs >= 21 && numyrs <=30)
+            intrestrate = 5;
+        else if(numyrs >= 31 && numyrs <=40)
+            intrestrate = 10;
+        else if(numyrs >= 41 && numyrs <=50)
+            intrestrate = 15;
+         else if(numyrs >=51)
+            intrestrate = 20;
+        tax = (salery*intrestrate*numyrs) / 100;
+                System.out.println(numyrs);
+    }
+    public void display(){
+        caltax();
+        System.out.println("Employee Name is: "+Name);
+        System.out.println(Name+" Dob is: "+db+"-"+mb+"-"+yb);
+        System.out.println(Name+" Monthly Salery is: "+salery);
+        System.out.println(Name+" tax Amount is For "+numyrs+ " Year Is: "+tax);
+    }
+}
+
+public class Main
+{
+	public static void main(String[] args) {
+	    Employee E1 = new Employee();
+	    E1.display();
+	}
+}
